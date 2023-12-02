@@ -1,4 +1,3 @@
-
 func firstDigit(_ str: String) -> Int? {
     for c in str {
         if let i = c.wholeNumberValue {
