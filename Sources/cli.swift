@@ -45,6 +45,11 @@ struct AdventOfCode: ParsableCommand {
             print("part1 = ", Day08.part1(input))
             print("part2 = ", Day08.part2(input))
         }
+        
+        if day == 9 {
+            print("part1 = ", Day09.part1(input))
+            print("part2 = ", Day09.part2(input))
+        }
     }
 
     func input() -> [String] {
