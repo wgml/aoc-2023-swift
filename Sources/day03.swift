@@ -1,19 +1,5 @@
 import Foundation
 
-struct XY: Hashable {
-    let x: Int
-    let y: Int
-    
-    static func == (lhs: XY, rhs: XY) -> Bool {
-        return lhs.x == rhs.x && lhs.y == rhs.y
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(x)
-        hasher.combine(y)
-    }
-}
-
 let GEAR: Character = "*"
 
 func parseInput(_ lines: [String]) -> ([XY: Int], [XY: Character]) {
