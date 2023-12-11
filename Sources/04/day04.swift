@@ -1,11 +1,18 @@
+import Common
 import Foundation
+
 struct Card {
     let winning: Set<Int>
     let mine: Set<Int>
 }
 
-enum Day04 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day04: Common.Day<Int> {
+    static func main() {
+        Day04().run()
+    }
+    
+    override open func part1(_ lines: [String]) -> Int {
         let cards = parseInput(lines)
         
         var result = 0
@@ -17,7 +24,7 @@ enum Day04 {
         return result
     }
 
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         let cards = parseInput(lines)
         
         var copies = Array(repeating: 1, count: cards.count)
@@ -37,7 +44,7 @@ enum Day04 {
         return copies.reduce(0) { (sum: Int, cur: Int) -> Int in sum + cur }
     }
     
-    static func parseInput(_ lines: [String]) -> [Card] {
+    func parseInput(_ lines: [String]) -> [Card] {
         var cards: [Card] = []
         
         for line in lines {

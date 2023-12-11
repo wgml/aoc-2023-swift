@@ -1,23 +1,26 @@
 // swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
+import Foundation
 import PackageDescription
+
+var day_targets: [PackageDescription.Target] = []
+for d in 1 ... 25 {
+    let d_str = String(format: "%02d", arguments: [d])
+    if FileManager.default.fileExists(atPath: "Sources/\(d_str)") {
+        day_targets.append(.executableTarget(name: "day\(d_str)",
+                                             dependencies: [.byName(name: "Common")],
+                                             path: "Sources/\(d_str)")
+        )
+    }
+}
 
 let package = Package(
     name: "aoc",
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
     ],
-
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .executableTarget(
-            name: "aoc",
-            dependencies: [
-                .product(name: "ArgumentParser", package: "swift-argument-parser"),
-            ],
-            path: "Sources"
-        ),
-    ]
+        .target(name: "Common", path: "Sources/Common"),
+    ] + day_targets
 )

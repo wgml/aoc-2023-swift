@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 func calculate_distances(map: [[Bool]], expansion_rate: Int) -> Int {
@@ -38,17 +39,22 @@ func calculate_distances(map: [[Bool]], expansion_rate: Int) -> Int {
     return distances
 }
 
-enum Day11 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day11: Common.Day<Int> {
+    static func main() {
+        Day11().run()
+    }
+    
+    override open func part1(_ lines: [String]) -> Int {
         return calculate_distances(map: parse_input(lines), expansion_rate: 2)
     }
     
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         return calculate_distances(map: parse_input(lines), expansion_rate: 1_000_000)
     }
 
 
-    static func parse_input(_ lines: [String]) -> [[Bool]] {
+    func parse_input(_ lines: [String]) -> [[Bool]] {
         return lines.map { l -> [Bool] in l.map { e -> Bool in e == "#" } }
     }
 }

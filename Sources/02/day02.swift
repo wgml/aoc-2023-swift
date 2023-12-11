@@ -1,3 +1,5 @@
+import Common
+
 struct Game {
     struct Round {
         var red: Int = 0
@@ -37,8 +39,13 @@ func parseInput(_ lines: [String]) -> [Game] {
     return games
 }
 
-enum Day02 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day02: Common.Day<Int> {
+    static func main() {
+        Day02().run()
+    }
+
+    override open func part1(_ lines: [String]) -> Int {
         var result = 0
         
         for (i, game) in parseInput(lines).enumerated() {
@@ -57,7 +64,7 @@ enum Day02 {
         return result
     }
 
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         var result = 0
         
         for game in parseInput(lines) {

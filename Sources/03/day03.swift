@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 let GEAR: Character = "*"
@@ -44,8 +45,13 @@ func length_of(_ number: Int) -> Int {
     return Int(log10f(Float(number)))+1
 }
 
-enum Day03 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day03: Common.Day<Int> {
+    static func main() {
+        Day03().run()
+    }
+    
+    override open func part1(_ lines: [String]) -> Int {
         let (numbers, symbols) = parseInput(lines)
         
         var result = 0
@@ -62,7 +68,7 @@ enum Day03 {
         return result
     }
 
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         let (numbers, symbols) = parseInput(lines)
         
         var gears: [XY: [Int]] = [:]

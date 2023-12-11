@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 struct Hand {
@@ -112,16 +113,21 @@ func rank_hands(hands: [Hand], sorted_by: (Hand, Hand) -> Bool) -> Int {
     return result
 }
 
-enum Day07 {
-    static func part1(_ lines: [String]) -> Int {
-        return rank_hands(hands:parse_input(lines), sorted_by: sort_by_rank)
+@main
+open class Day07: Common.Day<Int> {
+    static func main() {
+        Day07().run()
     }
 
-    static func part2(_ lines: [String]) -> Int {
-        return rank_hands(hands:parse_input(lines), sorted_by: sort_by_rank_with_jokers)
+    override open func part1(_ lines: [String]) -> Int {
+        return rank_hands(hands: parse_input(lines), sorted_by: sort_by_rank)
     }
 
-    static func parse_input(_ lines: [String]) -> [Hand] {
+    override open func part2(_ lines: [String]) -> Int {
+        return rank_hands(hands: parse_input(lines), sorted_by: sort_by_rank_with_jokers)
+    }
+
+    func parse_input(_ lines: [String]) -> [Hand] {
         var hands: [Hand] = []
         for line in lines {
             let parts = line.split(separator: " ")

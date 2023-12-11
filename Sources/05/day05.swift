@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 struct Almanac {
@@ -73,18 +74,23 @@ func map_seed_ranges(_ almanac: Almanac) -> Int {
     return result!
 }
 
-enum Day05 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day05: Common.Day<Int> {
+    static func main() {
+        Day05().run()
+    }
+
+    override open func part1(_ lines: [String]) -> Int {
         let almanac = parseInput(lines)
         return map_seeds(almanac)
     }
 
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         let almanac = parseInput(lines)
         return map_seed_ranges(almanac)
     }
     
-    static func parseInput(_ lines: [String]) -> Almanac {
+    func parseInput(_ lines: [String]) -> Almanac {
         let seeds = lines[0][(lines[0].firstIndex(of: " ")!)...].split(separator: " ").map { (s: String.SubSequence) -> Int in Int(s)! }
                  
         var stages: [Almanac.Stage] = []

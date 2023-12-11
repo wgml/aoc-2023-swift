@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 struct Network {
@@ -17,14 +18,19 @@ func find_steps_required(network: Network, start: String, end: (String) -> Bool)
     return steps
 }
 
-enum Day08 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day08: Common.Day<Int> {
+    static func main() {
+        Day08().run()
+    }
+
+    override open func part1(_ lines: [String]) -> Int {
         let network = parse_input(lines)
 
         return find_steps_required(network: network, start: "AAA", end: { c -> Bool in c == "ZZZ" })
     }
 
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         let network = parse_input(lines)
 
         let starts = network.nodes.keys.filter { i -> Bool in i.last == "A" }
@@ -35,7 +41,7 @@ enum Day08 {
         }
     }
 
-    static func parse_input(_ lines: [String]) -> Network {
+    func parse_input(_ lines: [String]) -> Network {
         let instructions = lines[0].map { i -> Int in i == "L" ? 0 : 1 }
         var nodes: [String: [String]] = [:]
         for l in lines[2...] {

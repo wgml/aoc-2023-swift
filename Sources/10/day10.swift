@@ -1,3 +1,4 @@
+import Common
 import Foundation
 
 enum Pipes {
@@ -102,14 +103,19 @@ func identify_main_loop(pipes: Map) -> (Set<XY>, (XY, Character)) {
     return (loop, (start, start_symbol!))
 }
 
-enum Day10 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day10: Common.Day<Int> {
+    static func main() {
+        Day10().run()
+    }
+
+    override open func part1(_ lines: [String]) -> Int {
         let pipes = lines.map { line -> [Character] in Array(line) }
         let (loop, _) = identify_main_loop(pipes: pipes)
         return (loop.count + 1) / 2
     }
 
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         var pipes = lines.map { line -> [Character] in Array(line) }
         let height = pipes.count
         let width = pipes.first!.count

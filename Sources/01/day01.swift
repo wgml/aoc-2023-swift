@@ -1,3 +1,5 @@
+import Common
+
 func firstDigit(_ str: String) -> Int? {
     for c in str {
         if let i = c.wholeNumberValue {
@@ -36,8 +38,13 @@ func identifyDigits(_ str: String) -> [Int] {
     return result
 }
 
-enum Day01 {
-    static func part1(_ lines: [String]) -> Int {
+@main
+open class Day01: Common.Day<Int> {
+    static func main() {
+        Day01().run()
+    }
+
+    override open func part1(_ lines: [String]) -> Int {
         var sum = 0
         for line in lines {
             let first = firstDigit(line)!
@@ -47,7 +54,7 @@ enum Day01 {
         return sum
     }
 
-    static func part2(_ lines: [String]) -> Int {
+    override open func part2(_ lines: [String]) -> Int {
         var sum = 0
         for line in lines {
             let digits = identifyDigits(line)
