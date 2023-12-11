@@ -55,6 +55,11 @@ struct AdventOfCode: ParsableCommand {
             print("part1 = ", Day10.part1(input))
             print("part2 = ", Day10.part2(input))
         }
+        
+        if day == 11 {
+            print("part1 = ", Day11.part1(input))
+            print("part2 = ", Day11.part2(input))
+        }
 
     }
 
