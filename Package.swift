@@ -18,9 +18,7 @@ for d in 1 ... 25 {
 let package = Package(
     name: "aoc",
     platforms: [.macOS(.v13)],
-    dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
-    ],
+    dependencies: [],
     targets: [
         .target(name: "Common", path: "Sources/Common"),
     ] + day_targets
