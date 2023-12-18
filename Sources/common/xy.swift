@@ -3,7 +3,7 @@ import Foundation
 public struct XY: Hashable {
     public var x: Int
     public var y: Int
-    
+
     public init(x: Int, y: Int) {
         self.x = x
         self.y = y
@@ -30,9 +30,13 @@ public func -= (xy: inout XY, offset: XY) {
 }
 
 public func + (xy: XY, offset: XY) -> XY {
-    return XY (x: xy.x + offset.x, y: xy.y + offset.y)
+    return XY(x: xy.x + offset.x, y: xy.y + offset.y)
 }
 
 public func - (xy: XY, offset: XY) -> XY {
-    return XY (x: xy.x - offset.x, y: xy.y - offset.y)
+    return XY(x: xy.x - offset.x, y: xy.y - offset.y)
+}
+
+public func * (xy: XY, times: Int) -> XY {
+    return XY(x: xy.x * times, y: xy.y * times)
 }
