@@ -4,22 +4,68 @@
 import Foundation
 import PackageDescription
 
-var day_targets: [PackageDescription.Target] = []
-for d in 1 ... 25 {
-    let d_str = String(format: "%02d", arguments: [d])
-    if FileManager.default.fileExists(atPath: "Sources/\(d_str)") {
-        day_targets.append(.executableTarget(name: "day\(d_str)",
-                                             dependencies: [.byName(name: "Common")],
-                                             path: "Sources/\(d_str)")
-        )
-    }
-}
-
 let package = Package(
     name: "aoc",
     platforms: [.macOS(.v13)],
     dependencies: [],
     targets: [
         .target(name: "Common", path: "Sources/Common"),
-    ] + day_targets
+        .executableTarget(name: "day01",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/01"),
+        .executableTarget(name: "day02",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/02"),
+        .executableTarget(name: "day03",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/03"),
+        .executableTarget(name: "day04",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/04"),
+        .executableTarget(name: "day05",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/05"),
+        .executableTarget(name: "day06",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/06"),
+        .executableTarget(name: "day07",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/07"),
+        .executableTarget(name: "day08",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/08"),
+        .executableTarget(name: "day09",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/09"),
+        .executableTarget(name: "day10",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/10"),
+        .executableTarget(name: "day11",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/11"),
+        .executableTarget(name: "day12",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/12"),
+        .executableTarget(name: "day13",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/13"),
+        .executableTarget(name: "day14",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/14"),
+        .executableTarget(name: "day15",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/15"),
+        .executableTarget(name: "day16",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/16"),
+        .executableTarget(name: "day17",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/17"),
+        .executableTarget(name: "day18",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/18"),
+        .executableTarget(name: "day19",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/19"),
+    ]
 )
