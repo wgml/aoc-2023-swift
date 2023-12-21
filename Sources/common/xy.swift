@@ -4,6 +4,11 @@ public struct XY: Hashable {
     public var x: Int
     public var y: Int
 
+    public static let Up = XY(x: 0, y: -1)
+    public static let Down = XY(x: 0, y: 1)
+    public static let Left = XY(x: -1, y: 0)
+    public static let Right = XY(x: 1, y: 0)
+
     public init(x: Int, y: Int) {
         self.x = x
         self.y = y
