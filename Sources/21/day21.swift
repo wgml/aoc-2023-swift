@@ -20,12 +20,18 @@ func reachable_points(stones: [[Bool]], start: XY, steps: Int) -> Int {
     var positions: Set<XY> = [start]
     var visited: Set<State> = [State(pos: start, i: 0)]
 
+    let width = stones[0].count
+    let height = stones.count
+
     for i in 1 ... steps {
         var new_positions: Set<XY> = []
         for p in positions {
             for d in directions {
                 let new_p = p + d
-                if !(new_p.x >= 0 && new_p.x < stones[0].count && new_p.y >= 0 && new_p.y < stones.count && !stones[new_p.y][new_p.x]) {
+                let px = (new_p.x % width + width) % width
+                let py = (new_p.y % height + height) % height
+
+                if stones[py][px] {
                     continue
                 }
                 let state = State(pos: new_p, i: i)
@@ -54,7 +60,12 @@ open class Day21: Common.Day<Int> {
 
     override open func part2(_ lines: [String]) -> Int {
         let (stones, start) = parse_input(lines)
-        return reachable_points(stones: stones, start: start, steps: 26501365) // 🫡
+        let width = stones[0].count
+        let half_width = width / 2
+        let cycles = 26501365 / width
+        let xs = [half_width, width + half_width, 2 * width + half_width]
+        let ys = xs.map { reachable_points(stones: stones, start: start, steps: $0) }
+        return ys[0] + cycles * (ys[1] - ys[0] + (cycles - 1) * ((ys[2] - 2 * ys[1] + ys[0]) / 2))
     }
 
     func parse_input(_ lines: [String]) -> (rocks: [[Bool]], start: XY) {
