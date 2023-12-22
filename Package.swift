@@ -73,5 +73,8 @@ let package = Package(
         .executableTarget(name: "day21",
                           dependencies: [.byName(name: "Common")],
                           path: "Sources/21"),
+        .executableTarget(name: "day22",
+                          dependencies: [.byName(name: "Common")],
+                          path: "Sources/22"),
     ]
 )
